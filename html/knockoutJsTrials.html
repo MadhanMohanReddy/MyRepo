@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="../lib/jquery-1.9.1.min.js"></script>
+		<script src="../lib/knockout.js"></script>
+		<script src="../lib/knockout.mapping-2.1.2.js"></script>   
+		<script type="text/javascript">
+			jQuery(document).ready(function() {			
+				var myViewModel = {
+					personName: 'Bob',
+					personAge: 123
+				};
+				ko.applyBindings(myViewModel);
+			});			
+		</script>
+	</head>
+	<body>
+		<h2>Sample3</h2>
+		<hr>
+		<h2>Todo</h2>
+		<span data-bind="text: personName"></span>	
+		The name is <a data-bind="attr: { href: personName, title: personName }">dfs</a>
+	</body>
+</html>
