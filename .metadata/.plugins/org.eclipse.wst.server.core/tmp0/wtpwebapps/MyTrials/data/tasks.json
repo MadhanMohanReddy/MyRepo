@@ -1,0 +1,8 @@
+{
+	"tasks" : [
+		{"text" : "Learn Angular JS", "done" : true, "archived" : false},
+		{"text" : "Build Angular App", "done" : false, "archived" : false},
+		{"text" : "Try Angular Components", "done" : false, "archived" : false},
+		{"text" : "Try Angular Routing", "done" : false, "archived" : false}
+	]
+}

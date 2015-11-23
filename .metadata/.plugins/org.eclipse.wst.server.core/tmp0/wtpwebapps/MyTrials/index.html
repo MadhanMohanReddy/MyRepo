@@ -1,0 +1,56 @@
+<!doctype html>
+<html ng-app="todoApp">
+	<head>
+		<title>My Sample App</title>   
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-route.min.js"></script>
+		<script src="js/todo.js"></script>
+		<link rel="stylesheet" href="css/todo.css">	
+	</head>
+	<body>
+		<!--<h1>MyChoice</h1>
+		<hr><hr>
+		<h2>Sample3</h2>
+		<hr>
+		<a href="html/knockoutJsTrials.html">KnockoutJs Trials</a>
+		<hr>
+		<h2>Sample2</h2>
+		<hr>-->
+		<h2>Tasks</h2>
+		<div ng-controller="TodoListController as todoList">
+			<span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+			[ <a href="" ng-click="todoList.archive()">archive</a> ]
+			<ul class="unstyled">
+				<li ng-repeat="todo in todoList.todos | archiveFilter:'nonarchived'">
+					<input type="checkbox" ng-model="todo.done">
+					<span class="done-{{todo.done}}">{{todo.text}}</span>
+				</li>
+			</ul>
+			<form ng-submit="todoList.addTodo()">
+				<input type="text" ng-model="todoList.todoText"  size="30" placeholder="Add new task here">
+				<input class="btn-primary" type="submit" value="add">
+			</form>
+			<hr>
+			
+			<input type="radio" name="todoType" value="all" ng-model="todoList.todoType" checked>All</input>
+			<input type="radio" name="todoType" value="archived" ng-model="todoList.todoType">Archive</input>
+			<input type="radio" name="todoType" value="nonarchived" ng-model="todoList.todoType">Non - Archive</input>
+			
+			<ul class="unstyled">
+				<li ng-repeat="todo in todoList.todos | archiveFilter:todoList.todoType">			
+					<span>{{todo.text}}</span>
+				</li>
+			</ul>		  
+		</div>
+		<a href="#trials">Trails</a>
+		<!--<hr>
+		<h2>Sample1</h2>
+		<hr>
+		<div>
+		  <label>Name:</label>
+		  <input type="text" ng-model="yourName" placeholder="Enter a name here">
+		  <hr>
+		  <h1>Hello {{yourName}}!</h1>
+		</div>-->
+	</body>
+</html>
