@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title>Sample D3 App</title>
+		<style>
+			.chart div {
+				font: 10px sans-serif;
+				background-color: steelblue;
+				text-align: right;
+				padding: 3px;
+				margin: 1px;
+				color: white;
+			}
+			
+			.chart rect {
+				fill: steelblue;
+			}
+
+			.chart text {
+				fill: white;
+				font: 10px sans-serif;
+				text-anchor: end;
+			}
+		</style>
+		<script src="../lib/jquery.min.js" charset="utf-8"></script>
+		<script src="../lib/d3.v3.min.js" charset="utf-8"></script>		
+		<script>
+		$(document).ready(function(){
+			/*var paragraphs = document.getElementsByTagName("p");
+			for (var i = 0; i < paragraphs.length; i++) {
+				var paragraph = paragraphs.item(i);
+				paragraph.style.setProperty("color", "red", null);				
+			}*/
+			
+			//d3.selectAll("p").style("color", "white");
+			//d3.select("body").style("background-color", "black");
+			d3.select("body").transition().style("background-color", "yellow");
+			
+			/*d3.selectAll("p").style("color", function() {
+				return "hsl(" + Math.random() * 360 + ",100%,50%)";
+			});*/
+			d3.selectAll("p").style("color", function(d, i) {
+				return i % 2 ? "red" : "green";
+			});
+			d3.selectAll("p")
+				.data([4, 8, 15, 16, 23, 42])
+				.style("font-size", function(d) { return d + "px"; });
+			
+			d3.select("body").selectAll("p")
+				.data([4, 8, 15, 16, 23, 42])
+				.enter().append("p")
+				.text(function(d) { return "I’m number " + d + "!"; });
+				
+			// Update…
+			var p = d3.select("body").selectAll("p")
+				.data([4, 8, 15, 16, 23, 42])
+				.text(function(d) { return d; });
+
+			// Enter…
+			p.enter().append("p")
+				.text(function(d) { return d; });
+
+			// Exit…
+			p.exit().remove();
+			
+			var data = [4, 8, 15, 16, 23, 42];
+			var x = d3.scale.linear()
+					.domain([0, d3.max(data)])
+					.range([0, 520]);
+	
+			d3.select(".chart")
+				.selectAll("div")
+				.data(data)
+				.enter().append("div")
+				.style("width", function(d) { return x(d) + "px"; })
+				.text(function(d) { return d; });
+		});			
+		</script>
+	</head>	
+	<body>
+		Hello
+		<p>Sample</p>
+		Hi
+		<p>This is </p><p>Paragraph1</p> and <p>paragraph2</p> 
+		Bye <p>Bye</p>test...<p>try</p>testing....<p>Enough</p>tested....
+		Maddy
+		
+		<div class="chart"></div>
+		
+		Using Svg....
+		<br>
+		
+		<svg class="chart" width="420" height="120">
+			<g transform="translate(0,0)">
+				<rect width="40" height="19"></rect>
+				<text x="37" y="9.5" dy=".35em">4</text>
+			</g>
+			<g transform="translate(0,20)">
+				<rect width="80" height="19"></rect>
+				<text x="77" y="9.5" dy=".35em">8</text>
+			</g>
+			<g transform="translate(0,40)">
+				<rect width="150" height="19"></rect>
+				<text x="147" y="9.5" dy=".35em">15</text>
+			</g>
+			<g transform="translate(0,60)">
+				<rect width="160" height="19"></rect>
+				<text x="157" y="9.5" dy=".35em">16</text>
+			</g>
+			<g transform="translate(0,80)">
+				<rect width="230" height="19"></rect>
+				<text x="227" y="9.5" dy=".35em">23</text>
+			</g>
+			<g transform="translate(0,100)">
+				<rect width="420" height="19"></rect>
+				<text x="417" y="9.5" dy=".35em">42</text>
+			</g>
+		</svg>
+		
+		<br>
+		Trying
+		<br>
+		
+			<rect width="150" height="19"></rect>
+		
+	</body>
+</html>
