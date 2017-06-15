@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN'
+        'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+
+    <bean id='beanNameUrlMapping' class='org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'/>
+
+    <bean name = '/CreateContact.htm' class='com.mine.controller.CreateContactController'>
+
+        <property name='formView'>
+            <value>CreateContact</value>
+        </property>
+        <property name='successView'>
+            <value>ContactCreated</value>
+        </property>
+
+    </bean>
+
+    <bean id='viewResolver' class='org.springframework.web.servlet.view.InternalResourceViewResolver'>
+        <property name='prefix' value='/WEB-INF/views/contacts/'/>
+        <property name='suffix' value='.jsp' />
+    </bean>
+
+</beans>
